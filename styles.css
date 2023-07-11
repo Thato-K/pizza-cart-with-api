@@ -1,0 +1,118 @@
+body{
+    background-color: #87a7be;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    border: 3px solid;
+    margin: 0.5em;
+    border-radius: 0.2em;
+}
+
+h5 {
+    text-align: center;
+    margin: 0.5em;
+    border-radius: 0.2em;
+    padding: 1em;
+    flex: 1;
+}
+
+.image1 {
+    width: 150px;
+}
+
+.message{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(12, 11, 11);
+}
+
+.image2 {
+    width: 100px;
+    padding-bottom: 2.5em;
+    padding-top: 0.9em;
+}
+
+.image3 {
+    width: 70px;
+    padding-bottom: 3.5em;
+    padding-top: 2em;
+}
+
+.pizza{
+    border: 0px solid black;
+    width: 100%;
+
+}
+
+.large_pizza{
+    background-color: rgb(235, 107, 9);
+    padding: 1em;
+    margin: 0.5em;
+    flex: 1;
+    width: 630px;
+    
+}
+
+.medium_pizza{
+    background-color: goldenrod;
+    padding: 1em;
+    margin: 0.5em;
+    flex: 1;
+    width: 630px;
+}
+
+.small_pizza{
+    background-color: rgb(214, 52, 122);
+    padding: 1em;
+    margin: 0.5em;
+    width: 630px;
+    flex: 1;
+}
+
+.contact {
+    background-color: rgb(185, 219, 31);
+    border: 0px solid black;
+    padding: 1em;
+    margin: 0.5em;
+    margin-bottom: 0em;
+    padding-bottom: 0em;
+}
+
+.API-Pizzas {
+    border: 0px solid black;
+    padding: 0 em;
+    margin: 0.5em;
+    margin-bottom: 0em;
+    padding-bottom: 0em;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+  }
+
+  td {
+    height: 24%;
+  }
+
+.cart {
+    background-color: rgb(94, 108, 103);
+    border: 0px solid black;
+    padding: 0.em;
+    margin: 0.5em;
+    margin-bottom: 0em;
+    padding-bottom: 0em;
+    
+}
+@media(min-width: 960px) {
+    body{
+        background-color: rgb(16, 107, 94);
+        }
+
+        .pizza {
+            display: flex;
+            width: 100%;
+        }
+
+        }

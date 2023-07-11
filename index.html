@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza cart with API</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
+</head>
+
+<body x-data="{
+    totalCost: 0,
+    message: '',
+    modal: false,
+    cart: {
+        large: 0,
+        medium: 0,
+        small: 0,
+      },
+
+    largeCount : 0,
+    largePrice: 90,
+    paymentAmount: 0,
+    largePizzaTotalPrice:0,
+
+    addLargePizza(){
+        this.largeCount++;
+        this.largePizzaTotalPrice = this.largePrice * this.largeCount;
+        this.cart.large++;
+    },
+    subtractLargePizza(){
+        if (this.largeCount > 0){
+            this.largeCount--;
+           this.largePizzaTotalPrice = this.largePrice * this.largeCount;
+           this.cart.large--;
+        }
+        
+    },
+    
+    mediumCount: 0,
+    mediumPrice: 60,
+    mediumPizzaTotalPrice: 0,
+
+    addMediumPizza(){
+        this.mediumCount++;
+        this.mediumPizzaTotalPrice = this.mediumPrice * this.mediumCount;
+        this.cart.medium++;
+    },
+    subtractMediumPizza(){
+        if (this.mediumCount > 0) {
+            this.mediumCount--;
+            this.mediumPizzaTotalPrice = this.mediumPrice * this.mediumCount;
+            this.cart.medium--;
+        }
+        
+    },
+
+    smallCount: 0,
+    smallPrice: 35,
+    smallPizzaTotalPrice: 0,
+    addSmallPizza(){
+        this.smallCount++;
+        this.smallPizzaTotalPrice = this.smallPrice * this.smallCount;
+        this.cart.small++;
+    },
+    subtractSmallPizza(){
+        if (this.smallCount > 0){
+            this.smallCount--;
+            this.smallPizzaTotalPrice = this.smallPrice * this.smallCount;
+            this.cart.small--;
+        }   
+    }
+
+
+}">
+    <h1>Perfect Pizza</h1>
+
+    <section>
+        <section class="cart">   
+        <div style="text-align: center; margin: 0.5em; border-radius: 0.2em; padding: 1em; flex: 1;">
+        <h2 style="text-align: center; margin: 0.5em; border-radius: 0.2em; padding: 1em; flex: 1;">Shopping cart</h2>
+        
+        <div style="text-align: center; margin: 0.5em; border-radius: 0.2em; padding: 0.5 em; flex: 1;" >
+        <h5>Large Pizza</h>    
+        <button @click="addLargePizza()">+</button>
+        <span x-text="largeCount" style="margin-right: 10px;"></span>
+        <button @click="subtractLargePizza()">-</button>
+        <span x-text="'R' + (largePrice * cart.large)" style="text-align: center; margin: 0.5em; border-radius: 0.2em; padding: 1em; flex: 1;">R90</span>
+        </div>
+    
+        <div>
+          <h5>Medium Pizza</h>
+          <button @click="addMediumPizza()">+</button>
+          <span x-text="mediumCount" style="margin-right: 10px;"></span>
+          <button @click="subtractMediumPizza()">-</button>
+          <span x-text="'R' + (mediumPrice * cart.medium)" style="margin-right: 10px;">R60</span>
+        </div> 
+    
+        <div>
+          <h5>Small Pizza</h>
+          <button @click="addSmallPizza()">+</button>
+          <span x-text="smallCount" style="margin-right: 10px;"></span>
+          <button @click="subtractSmallPizza()">-</button>
+          <span x-text="'R' + (smallPrice * cart.small)" style="margin-right: 10px;">R35</span>
+        </div>
+
+        <div style="text-align: center; margin: 0.5em; border-radius: 0.2em; padding: 1em; flex: 1;">
+            <h4>Total cost:</h4>
+            <span x-text=" 'R' + (totalCost = (largePrice * cart.large) + (mediumPrice * cart.medium) + (smallPrice * cart.small))"></span>
+        </div>
+        <hr>
+
+        <template x-if=" totalCost > 0 ">
+            <div x-show="true">
+                <button @click="modal = true">Check out</button>
+            </div>
+        </template>
+        
+        <div class= 'message' x-show="modal" @click.outside="modal = false" style="display: flex; align-items: center;">
+            <div x-text="message"></div>
+            <h5 style="color: black; margin-right: 10px;">Payment amount</h5>
+            <input type="text" x-model="paymentAmount" class="theInputValue">
+            <button @click="if(paymentAmount >= totalCost){
+                message='Enjoy your pizzas!';
+            }else{
+                message = 'Sorry - that is not enough money!'
+            }
+            ">Comfirm the amount</button>
+        </div>
+        
+        <br>  
+        </section>
+
+<section class="pizza">
+    <div class="large_pizza">
+        <h2>Large Pizza</h2>
+         <img src= "Pizzaimages.jpg" class="image1">
+         <h3>R90.00</h3>
+         <p>Large margeritha pizza with 3 toppings max.</p>
+         <p>3 meat toppings max.</p>
+         <p> 3 or less other toppings.</p>
+        <button @click="addLargePizza()">Add to cart</button>
+    </div>
+
+    <div class="medium_pizza">
+        <h2>Medium Pizza</h2>
+        <img src= "Pizzaimages.jpg" class="image2"> 
+        <h3>R60.00</h3>
+          <p>Medium margeritha pizza with 3 toppings max.</p>
+          <p>2 or less meat toppings.</p>
+          <p>3 or less other toppings.</p>
+          <button @click="addMediumPizza()">Add to cart</button>
+    </div> 
+
+    <div class="small_pizza">
+        <h2>Small Pizza</h2>
+        <img src= "Pizzaimages.jpg" class="image3">
+        <h3>R35.00</h3>
+        <p>Small pizza with 3 toppings.</p>
+        <p>1 meat topping.</p>
+        <p>3 or less other toppings.</p>
+        <button @click="addSmallPizza()">Add to cart</button>
+    </div>
+
+</section>
+
+<section>
+
+    <div class="API-Pizzas">
+        <table>
+
+            <tr style="background-color: aliceblue;">
+                <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                <td width="45%">Large other & mush pizza</td>
+                <td width="10%">R90</td>
+                <td width="20%"><button @click="addLargePizza()">Add to cart</button></td>
+            </tr>
+
+            <tr style="background-color: bisque;">
+                <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                <td>Large chicken & mush pizza</td>
+                <td>R90</td>
+                <td><button @click="addLargePizza()">Add to cart</button></td>
+            </tr>
+
+            <tr style="background-color: aliceblue;">
+                <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                <td>Large BBQ chicken pizza</td>
+                <td>R90</td>
+                <td><button @click="addLargePizza()">Add to cart</button></td>
+            </tr>
+
+            <tr style="background-color: bisque;">
+                <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                <td>Medium other & mush pizza</td>
+                <td>R60</td>
+                <td><button @click="addMediumPizza()">Add to cart</button></td>
+            </tr>
+
+            <tr style="background-color: aliceblue;">
+                <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                <td>Medium chicken & mush pizza</td>
+                <td>R60</td>
+                <td><button @click="addMediumPizza()">Add to cart</button></td>
+            </tr>
+
+            <tr style="background-color: bisque;" >
+                <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                <td>Medium BBQ chicken pizza</td>
+                <td>R60</td>
+                <td><button @click="addLargePizza()">Add to cart</button></td>
+            </tr>
+
+            <tr style="background-color: aliceblue;">
+                <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                <td>Small other & mush pizza</td>
+                <td>R35</td>
+                <td><button @click="addSmallPizza()">Add to cart</button></td>
+            </tr>
+
+            <tr style="background-color: bisque;">
+                <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                <td>Small chicken & mush pizza</td>
+                <td>R35</td>
+                <td><button @click="addSmallPizza()">Add to cart</button></td>
+            </tr>
+
+            <tr style="background-color: aliceblue;">
+                <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                <td>Small BBQ chicken pizza</td>
+                <td>R35</td>
+                <td><button @click="addSmallPizza()">Add to cart</button></td>
+            </tr>
+
+        </table>
+
+    </div>
+</section>
+
+</section>
+
+    <div class="contact">
+       <h2>Contact details</h2>
+       <p>Contact us at: (021)-541-1000</p>
+       <p>info@perfectpizza.co.za</p>
+       <p>/fb</p>
+       <p>/insta</p>
+       <p>@perfectpizza</p>
+       <br>
+    </div>
+    <br>
+    
+</body>
+</html>
