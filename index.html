@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="styles.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="pizza.js"></script>
     
 </head>
 
-<body x-data="{
+ <!-- <body x-data="{
+
     totalCost: 0,
     message: '',
     modal: false,
@@ -75,8 +77,12 @@
     }
 
 
-}">
-    <h1>Perfect Pizza</h1>
+}"  > -->
+
+    <body x-data="pizzaCartWithAPIWidget">
+
+    
+    <h1>PERFECT PIZZA</h1>
 
     <section>
         <section class="cart">   
