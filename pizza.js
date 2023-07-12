@@ -1,28 +1,20 @@
-// document.addEventListener('alpine:init', () => {
+document.addEventListener('alpine:init', () => {
 
-//     alpine.data('pizzaCartWithAPIWidget', {
-//         return { 
-//             pizzas : [],
-//             init() {
-//                 axios
-//                 //.get('https://pizza-api.projectcodex.net/api/pizzas')
-//                 //.then((result) => {
-//                  //console.log(result.data);
+    Alpine.data('pizzaCartWithAPIWidget', () => {
+        return { 
+            pizzas : [],
+            init() {
+                axios
+                .get('https://pizza-api.projectcodex.net/api/pizzas')
+                .then((result) => {
+                 console.log(result.data);
         
-//                 pizzas = result.data.pizzas
+                pizzas = result.data.pizzas
         
-//             }) 
+            }) 
 
-//         }
+        },
 
-//     }
-
-//     });
-// });
-
-
-document.addEventListener('pizzaCartWithAPIWidget', function () {
-    const app = {
       totalCost: 0,
       message: '',
       modal: false,
@@ -98,9 +90,10 @@ document.addEventListener('pizzaCartWithAPIWidget', function () {
           this.mediumPrice * this.cart.medium +
           this.smallPrice * this.cart.small;
       },
-    };
-  
-    
-    Alpine.data('app', () => app);
-  });
-  
+
+    }
+
+    });
+});
+
+
