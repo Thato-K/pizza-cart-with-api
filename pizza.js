@@ -1,17 +1,39 @@
 document.addEventListener('alpine:init', () => {
 
     Alpine.data('pizzaCartWithAPIWidget', () => {
-        return { 
+        return {
+            title: 'Perfect Pizza with API',
             pizzas : [],
+            username: 'Thato-K',
+            cartId: 'eK85AcIPeF',
+            cartPizzas : [],
+            cartTotal : 0.00,
+
+
+            getCart() {
+              const getCartURL = `http://pizza-api.projectcodex.net/api/pizza-cart/${this.cartId}/get`
+              return axios.get(getCartURL);
+            }, 
+            
+            showCartData() {
+              this.getCart().then(result => {
+                const cartData = result.data;
+
+                this.cartPizzas = cartData.pizzas;
+                this.cartTotal = cartData.total.tofixed(2);
+                
+              });
+            },
+
             init() {
                 axios
                 .get('https://pizza-api.projectcodex.net/api/pizzas')
                 .then((result) => {
                  console.log(result.data);
-        
-                pizzas = result.data.pizzas
-        
-            }) 
+                 this.Pizzas = result.data.pizzas;
+            });
+
+            this.showCartData();       
 
         },
 
@@ -96,4 +118,4 @@ document.addEventListener('alpine:init', () => {
     });
 });
 
-
+Alpine.start ()
