@@ -179,12 +179,14 @@
     <div class="API-Pizzas">
         <table>
 
-            <tr style="background-color: aliceblue;">
-                <td><img src= "Pizzaimages.jpg" class="image3"></td>
-                <td width="45%">Large other & mush pizza</td>
-                <td width="10%">R90</td>
-                <td width="20%"><button @click="addLargePizza()">Add to cart</button></td>
-            </tr>
+            <template x-for="pizza in pizzas">
+             <tr style="background-color: aliceblue;">
+                         <td><img src= "Pizzaimages.jpg" class="image3"></td> 
+                         <td x-text="pizza.flavour">Small other & mush pizza</td>
+                         <td x-text="pizza.price">R35</td>
+                         <td><button @click="addPizza(pizza.id)">Add to cart</button></td>
+                </tr>   
+            </template>
 
             <!-- <template x-for="pizza in pizzas">
               <tr style="background-color: bisque;">
@@ -195,54 +197,135 @@
               </tr>
             </template> -->
 
-            <tr style="background-color: aliceblue;">
+            <template>
+                <tr style="background-color: bisque;">
+                    <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                    <td width="45%" x-text="pizza.flavour">Large chicken & mush pizza</td>
+                    <td width="10%" x-text="pizza.price">R90</td>
+                    <td width="20%"><button @click="addPizza(pizza.id)">Add to cart</button></td>
+                 </tr> 
+            </template>
+
+            <!-- <tr style="background-color: aliceblue;">
                 <td><img src= "Pizzaimages.jpg" class="image3"></td>
                 <td>Large BBQ chicken pizza</td>
                 <td>R90</td>
                 <td><button @click="addLargePizza()">Add to cart</button></td>
-            </tr>
+            </tr> -->
 
-            <tr style="background-color: bisque;">
+            <template>
+                <tr style="background-color: aliceblue;">
+                    <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                    <td width="45%" x-text="pizza.flavour">Large BBQ chicken pizza</td>
+                    <td width="10%" x-text="pizza.price">R90</td>
+                    <td width="20%"><button @click="addPizza(pizza.id)">Add to cart</button></td>
+                 </tr> 
+            </template>
+
+            <template>
+                <tr style="background-color: aliceblue;">
+                    <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                    <td width="45%" x-text="pizza.flavour">Large other & mush pizza</td>
+                    <td width="10%" x-text="pizza.price">R90</td>
+                    <td width="20%"><button @click="addPizza(pizza.id)">Add to cart</button></td>
+                 </tr> 
+            </template>
+
+            <!-- <tr style="background-color: bisque;">
                 <td><img src= "Pizzaimages.jpg" class="image3"></td>
                 <td>Medium other & mush pizza</td>
                 <td>R60</td>
                 <td><button @click="addMediumPizza()">Add to cart</button></td>
-            </tr>
+            </tr> -->
 
-            <tr style="background-color: aliceblue;">
+            <template>
+                <tr style="background-color: bisque;">
+                    <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                    <td width="45%" x-text="pizza.flavour">Medium other & mush pizza</td>
+                    <td width="10%" x-text="pizza.price">R60</td>
+                    <td width="20%"><button @click="addPizza(pizza.id)">Add to cart</button></td>
+                 </tr> 
+            </template>
+
+            <!-- <tr style="background-color: aliceblue;">
                 <td><img src= "Pizzaimages.jpg" class="image3"></td>
                 <td>Medium chicken & mush pizza</td>
                 <td>R60</td>
                 <td><button @click="addMediumPizza()">Add to cart</button></td>
-            </tr>
+            </tr> -->
 
-            <tr style="background-color: bisque;" >
+            <template>
+                <tr style="background-color: aliceblue;">
+                    <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                    <td width="45%" x-text="pizza.flavour">Medium chicken & mush pizza</td>
+                    <td width="10%" x-text="pizza.price">R60</td>
+                    <td width="20%"><button @click="addPizza(pizza.id)">Add to cart</button></td>
+                 </tr> 
+            </template>
+
+            <!-- <tr style="background-color: bisque;" >
                 <td><img src= "Pizzaimages.jpg" class="image3"></td>
                 <td>Medium BBQ chicken pizza</td>
                 <td>R60</td>
                 <td><button @click="addLargePizza()">Add to cart</button></td>
-            </tr>
+            </tr> -->
 
-            <tr style="background-color: aliceblue;">
+            <template>
+                <tr style="background-color: bisque;">
+                    <td><img src= "Pizzaimages.jpg" class="image3"></td>
+                    <td width="45%" x-text="pizza.flavour">Medium BBQ chicken pizza</td>
+                    <td width="10%" x-text="pizza.price">R60</td>
+                    <td width="20%"><button @click="addPizza(pizza.id)">Add to cart</button></td>
+                 </tr> 
+            </template>
+
+            <!-- <tr style="background-color: aliceblue;">
                 <td><img src= "Pizzaimages.jpg" class="image3"></td>
                 <td>Small other & mush pizza</td>
                 <td>R35</td>
                 <td><button @click="addSmallPizza()">Add to cart</button></td>
-            </tr>
+            </tr> -->
 
-            <tr style="background-color: bisque;">
+            <template x-for="pizza in pizzas">
+                <tr style="background-color: aliceblue;">
+                            <td><img src= "Pizzaimages.jpg" class="image3"></td> 
+                            <td x-text="pizza.flavour">Small other & mush pizza</td>
+                            <td x-text="pizza.price">R35</td>
+                            <td><button @click="addPizza(pizza.id)">Add to cart</button></td>
+                </tr>   
+            </template>
+
+            <!-- <tr style="background-color: bisque;">
                 <td><img src= "Pizzaimages.jpg" class="image3"></td>
                 <td>Small chicken & mush pizza</td>
                 <td>R35</td>
                 <td><button @click="addSmallPizza()">Add to cart</button></td>
-            </tr>
+            </tr> -->
 
-            <tr style="background-color: aliceblue;">
+            <template>
+                <tr style="background-color: bisque;">
+                            <td><img src= "Pizzaimages.jpg" class="image3"></td> 
+                            <td x-text="pizza.flavour">Small chicken & mush pizza</td>
+                            <td x-text="pizza.price">R35</td>
+                            <td><button @click="addPizza(pizza.id)">Add to cart</button></td>
+                </tr>   
+            </template>
+
+            <!-- <tr style="background-color: aliceblue;">
                 <td><img src= "Pizzaimages.jpg" class="image3"></td>
                 <td>Small BBQ chicken pizza</td>
                 <td>R35</td>
                 <td><button @click="addSmallPizza()">Add to cart</button></td>
-            </tr>
+            </tr> -->
+
+            <template x-for="pizza in pizzas">
+                <tr style="background-color: aliceblue;">
+                    <td><img src="Pizzaimages.jpg" class="image3"></td>
+                    <td x-text="pizza.flavour">Small BBQ chicken pizza</td>
+                    <td x-text="pizza.price">R35</td>
+                    <td><button @click="addPizza(pizza.id)">Add to cart</button></td>
+                </tr>
+            </template>
 
         </table>
 
