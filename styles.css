@@ -1,4 +1,4 @@
-body{
+body {
     background-color: #87a7be;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -22,7 +22,7 @@ h5 {
     width: 150px;
 }
 
-.message{
+.message {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(12, 11, 11);
 }
@@ -39,22 +39,22 @@ h5 {
     padding-top: 2em;
 }
 
-.pizza{
+.pizza {
     border: 0px solid black;
     width: 100%;
 
 }
 
-.large_pizza{
+.large_pizza {
     background-color: rgb(235, 107, 9);
     padding: 1em;
     margin: 0.5em;
     flex: 1;
     width: 630px;
-    
+
 }
 
-.medium_pizza{
+.medium_pizza {
     background-color: goldenrod;
     padding: 1em;
     margin: 0.5em;
@@ -62,7 +62,7 @@ h5 {
     width: 630px;
 }
 
-.small_pizza{
+.small_pizza {
     background-color: rgb(214, 52, 122);
     padding: 1em;
     margin: 0.5em;
@@ -79,7 +79,7 @@ h5 {
     padding-bottom: 0em;
 }
 
-.API-Pizzas {
+.cart-items {
     border: 0px solid black;
     padding: 0 em;
     margin: 0.5em;
@@ -90,11 +90,11 @@ h5 {
 table {
     width: 100%;
     text-align: center;
-  }
+}
 
-  td {
+td {
     height: 24%;
-  }
+}
 
 .cart {
     background-color: rgb(94, 108, 103);
@@ -103,16 +103,23 @@ table {
     margin: 0.5em;
     margin-bottom: 0em;
     padding-bottom: 0em;
-    
+
 }
+
 @media(min-width: 960px) {
-    body{
+    body {
         background-color: rgb(16, 107, 94);
-        }
+    }
 
-        .pizza {
-            display: flex;
-            width: 100%;
-        }
+    .pizza {
+        display: flex;
+        width: 100%;
+    }
 
-        }
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
